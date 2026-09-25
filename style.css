@@ -1,5 +1,5 @@
 body{
-    color: rgb(36, 36, 36);
+    color: rgb(63, 75, 137);
     font-family: Arial, Helvetica, sans-serif;
    background: -webkit-linear-gradient(90deg,#ffffff,#d0e3ff,#eaeaee,#faf2e5);  
    background: linear-gradient(90deg,#ffffff,#d0e3ff,#eaeaee,#faf2e5);
@@ -32,4 +32,10 @@ li{
 li:hover{
     opacity: 1;
     cursor: pointer;
+}
+main{
+    font-display: block;
+    margin: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #4651b0;
 }
