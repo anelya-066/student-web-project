@@ -1,41 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новый проект</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-    <div class="head">
-        <h1>
-            Проект
-        </h1>
-    </div>
+
+  <div class="calculator">
+    <input type="text" class="calculator-screen" id="screen" disabled />
     
-    </header>
+    <div class="calculator-keys">
+      <button class="operator" onclick="appendOperator('+')">+</button>
+      <button class="operator" onclick="appendOperator('-')">-</button>
+      <button class="operator" onclick="appendOperator('*')">&times;</button>
+      <button class="operator" onclick="appendOperator('/')">&divide;</button>
 
-    <nav>
-        <ul class="nav">
-            <li>
-                главная страница
-            </li>
+      <button onclick="appendNumber('7')">7</button>
+      <button onclick="appendNumber('8')">8</button>
+      <button onclick="appendNumber('9')">9</button>
 
-            <li>
-                каталог
-            </li>    
-          
-        </ul>
-    </nav>
-    <main>
-        <p> 
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio blanditiis quos temporibus obcaecati aspernatur neque culpa nostrum labore quasi a architecto, 
-        ad aut tenetur modi odio voluptates vitae nisi similique?
-        </p>
-        <a>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui, dolorum. Ipsam delectus cumque sunt, ad optio fuga omnis dolorem aut fugit obcaecati molestias. Laborum, dicta. Blanditiis id quam dolorem unde.
-        </a>
-    </main>
+      <button onclick="appendNumber('4')">4</button>
+      <button onclick="appendNumber('5')">5</button>
+      <button onclick="appendNumber('6')">6</button>
+
+      <button onclick="appendNumber('1')">1</button>
+      <button onclick="appendNumber('2')">2</button>
+      <button onclick="appendNumber('3')">3</button>
+
+      <button onclick="appendNumber('0')">0</button>
+      <button onclick="appendNumber('.')">.</button>
+      <button class="all-clear" onclick="clearScreen()">C</button>
+
+      <button class="equal-sign" onclick="calculate()">=</button>
+    </div>
+  </div>
+
+  <script src="sscript.js"></script>
 </body>
 </html>
