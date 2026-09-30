@@ -4,11 +4,11 @@ const shellEl = document.getElementById('shell');
     const line2 = document.getElementById('line2');
 
     // Точка крепления нити в правом верхнем углу окна (в 140px от правого края)
-    let anchor = { x: window.innerWidth - 140, y: 0 };
+    let anchor = { x: window.innerWidth - 340, y: 0 };
 
     // Координаты брелоков
-    const p1 = { x: anchor.x, y: 220, oldX: anchor.x, oldY: 220, length: 220 };
-    const p2 = { x: anchor.x, y: 275, oldX: anchor.x, oldY: 275, length: 55 };
+    const p1 = { x: anchor.x, y: 300, oldX: anchor.x, oldY: 120, length: 220 };
+    const p2 = { x: anchor.x, y: 250, oldX: anchor.x, oldY: 275, length: 95 };
 
     // Физика пружины
     const gravity = 0.4;

@@ -2,6 +2,15 @@
       box-sizing: border-box;
     }
 
+
+      @font-face {
+    font-family: 'MyCustomFont';
+    src: url('font/Excalifont-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+    
     /* Растягиваем сайт на весь экран */
     body {
       margin: 0;
@@ -10,7 +19,7 @@
       display: flex;
       flex-direction: column;
       background-color: #ffffff;
-      font-family: 'Comic Sans MS', 'Comic Neue', cursive, sans-serif;
+      font-family: 'MyCustomFont', sans-serif;
       overflow-x: hidden;
       user-select: none;
     }
@@ -67,7 +76,7 @@
       border: 3.5px solid #8493c5;
       border-radius: 14px;
       background-color: #ffffff;
-      box-shadow: 0 10px 25px rgba(130, 145, 195, 0.2);
+      box-shadow: 0 5px 0px rgba(130, 145, 195, 0.2);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -138,7 +147,7 @@
       width: 100%;
       padding: 30px 20px;
       text-align: center;
-      color: #5b6ba3;
+      color: #7c839f;
       font-weight: bold;
     }
 
@@ -147,7 +156,7 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
+      width: 200%;
       height: 100%;
       pointer-events: none;
       z-index: 100;
@@ -155,7 +164,7 @@
 
     .string-line {
       stroke: #333333;
-      stroke-width: 1.5px;
+      stroke-width: 3px;
       stroke-linecap: round;
     }
 
@@ -178,5 +187,5 @@
       image-rendering: crisp-edges;
     }
 
-    #shell-img { width: 36px; }
-    #bunny-img { width: 54px; }
+    #shell-img { width: 110px; }
+    #bunny-img { width: 110px; }
