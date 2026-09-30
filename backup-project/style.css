@@ -1,81 +1,44 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f4f4f9;
-}
-
-.calculator {
-  width: 320px;
-  background-color: #22252d;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
-}
-
-.calculator-screen {
+/* Контейнер нижней голубой части */
+.ocean {
+  position: relative;
   width: 100%;
+  background: #c3d9f3; /* Основной голубой цвет нижней зоны */
+  overflow: hidden;
+}
+
+/* Стили для SVG-волн */
+.wave {
+  position: absolute;
+  top: -60px; /* Выносим верхушки волн над голубым блоком */
+  left: 0;
+  width: 200%; /* Ширина 200%, чтобы плавно зациклить горизонтальный сдвиг */
   height: 60px;
-  border: none;
-  background-color: #292d36;
-  border-radius: 10px;
-  color: #ffffff;
-  font-size: 2rem;
-  text-align: right;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-bottom: 20px;
+  fill: #c3d9f3; /* Цвет совпадает с фоном .ocean */
+  animation: moveWave 10s linear infinite;
 }
 
-.calculator-keys {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+/* Вторая волна для объема и полупрозрачности */
+.wave2 {
+  top: -70px;
+  opacity: 0.5;
+  animation: moveWave 7s linear infinite reverse;
 }
 
-button {
-  height: 55px;
-  border: none;
-  border-radius: 12px;
-  background-color: #292d36;
-  color: #ffffff;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+/* Тело нижнего блока */
+.ocean-body {
+  height: 150px; /* Нужная высота нижней зоны */
+  background: #c3d9f3;
 }
 
-button:hover {
-  background-color: #353b47;
-}
-
-button:active {
-  transform: scale(0.95);
-}
-
-.operator {
-  color: #eb6666;
-  background-color: #272b33;
-}
-
-.all-clear {
-  color: #26e7a6;
-  background-color: #272b33;
-}
-
-.equal-sign {
-  background-color: #eb6666;
-  color: #ffffff;
-  grid-column: span 2;
-}
-
-.equal-sign:hover {
-  background-color: #d95353;
+/* Анимация движения волны влево и вправо */
+@keyframes moveWave {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
