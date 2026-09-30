@@ -4,23 +4,65 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>website</title>
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="card">
-  <!-- Верхняя белая часть с поиском и окном -->
-  <div class="card-top">
-    <!-- Ваш контент сверху -->
-  </div>
 
-  <!-- Нижняя голубая часть с волной -->
-  <div class="card-bottom">
-    <svg class="wave-svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path d="M0,30 C150,90 350,-10 500,40 C650,90 900,10 1200,40 L1200,120 L0,120 Z" class="wave-back"></path>
-      <path d="M0,50 C200,10 C400,80 600,20 800,70 C1000,20 1100,60 1200,40 L1200,120 L0,120 Z" class="wave-front"></path>
+ 
+<!-- Верхняя секция сайта -->
+  <main class="main-content">
+    <div class="search-container">
+      <input type="text" placeholder="search" class="search-input">
+      <svg class="search-icon" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="7"/>
+        <line x1="16.5" y1="16.5" x2="21" y2="21"/>
+      </svg>
+    </div>
+
+    <div class="modal-window">
+      <div class="modal-header">
+        <span class="close-icon">ⓧ</span>
+      </div>
+      <div class="modal-body">
+        <p class="welcome-text">Welcome to my website !</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Анимированная волна -->
+  <div class="wave-container">
+    <svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="parallax">
+        <use href="#gentle-wave" x="48" y="0" fill="rgba(203, 220, 243, 0.7)" />
+        <use href="#gentle-wave" x="48" y="3" fill="rgba(203, 220, 243, 0.5)" />
+        <use href="#gentle-wave" x="48" y="5" fill="rgba(203, 220, 243, 0.3)" />
+        <use href="#gentle-wave" x="48" y="7" fill="#cbdcf3" />
+      </g>
     </svg>
   </div>
-</div>
+
+  <!-- Нижний подвал -->
+  <footer class="footer">
+    © 2026 Ваш Сайт. Все права защищены.
+  </footer>
+  <!-- Интерактивная нить и брелоки -->
+  <svg class="string-svg">
+    <line id="line1" class="string-line" />
+    <line id="line2" class="string-line" />
+  </svg>
+
+  <div id="shell" class="keychain-item">
+    <img src="sea-0001.png" id="shell-img" alt="Shell">
+  </div>
+
+  <div id="bunny" class="keychain-item">
+    <img src="jellyfish-0001.png" id="bunny-img" alt="Bunny">
+  </div>
+<script src="sscript.js">
   
+</script>
 </body>
 </html>

@@ -1,50 +1,182 @@
-/* Родительская карточка */
-.card {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  border-radius: 24px;
-  overflow: hidden; /* Обрезает волны по краям карточки */
-  background: #ffffff;
-}
+* {
+      box-sizing: border-box;
+    }
 
-/* Нижний голубой блок */
-.card-bottom {
-  position: relative;
-  width: 100%;
-  height: 180px; /* Высота нижней голубой зоны */
-  background-color: #cddcf0; /* Основной голубой цвет */
-}
+    /* Растягиваем сайт на весь экран */
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #ffffff;
+      font-family: 'Comic Sans MS', 'Comic Neue', cursive, sans-serif;
+      overflow-x: hidden;
+      user-select: none;
+    }
 
-/* SVG волны */
-.wave-svg {
-  position: absolute;
-  top: -59px; /* Подтягиваем волну к верхней границе голубого блока */
-  left: 0;
-  width: 200%; /* Ширина x2 для бесшовной анимации */
-  height: 60px;
-  pointer-events: none;
-}
+    /* Верхняя основная секция */
+    .main-content {
+      flex: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      min-height: 65vh;
+    }
 
-/* Задняя полупрозрачная волна */
-.wave-back {
-  fill: #cddcf0;
-  opacity: 0.5;
-  animation: waveAnim 8s linear infinite alternate;
-}
+    /* Поисковая строка */
+    .search-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
 
-/* Передняя основная волна */
-.wave-front {
-  fill: #cddcf0;
-  animation: waveAnim 5s ease-in-out infinite alternate;
-}
+    .search-input {
+      width: 380px;
+      height: 38px;
+      border-radius: 20px;
+      border: 2px solid #a4b3e3;
+      padding: 0 18px;
+      font-family: inherit;
+      font-size: 16px;
+      color: #8f9ed4;
+      outline: none;
+      background: #ffffff;
+    }
 
-/* Анимация "плавания" влево-вправо */
-@keyframes waveAnim {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
+    .search-input::placeholder {
+      color: #b7c4eb;
+    }
+
+    .search-icon {
+      width: 28px;
+      height: 28px;
+      stroke: #8f9ed4;
+      stroke-width: 2.5;
+      fill: none;
+    }
+
+    /* Модальное окно */
+    .modal-window {
+      width: 450px;
+      height: 260px;
+      border: 3.5px solid #8493c5;
+      border-radius: 14px;
+      background-color: #ffffff;
+      box-shadow: 0 10px 25px rgba(130, 145, 195, 0.2);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      background-color: #8f9ed4;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      padding-left: 14px;
+      color: #ffffff;
+    }
+
+    .close-icon {
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .modal-body {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .welcome-text {
+      font-size: 22px;
+      color: #5b6ba3;
+      font-style: italic;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+
+    /* Блок плавных волн */
+    .wave-container {
+      width: 100%;
+      height: 12vh;
+      min-height: 80px;
+      max-height: 140px;
+      margin-bottom: -2px;
+      line-height: 0;
+    }
+
+    .waves-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Анимация волн */
+    .parallax > use {
+      animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+    }
+    .parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; }
+    .parallax > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; }
+    .parallax > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; }
+    .parallax > use:nth-child(4) { animation-delay: -5s; animation-duration: 20s; }
+
+    @keyframes move-forever {
+      0% { transform: translate3d(-90px, 0, 0); }
+      100% { transform: translate3d(85px, 0, 0); }
+    }
+
+    /* Нижний подвал */
+    .footer {
+      background-color: #cbdcf3;
+      width: 100%;
+      padding: 30px 20px;
+      text-align: center;
+      color: #5b6ba3;
+      font-weight: bold;
+    }
+
+    /* Позиционирование физической нити и брелоков поверх экрана */
+    .string-svg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    .string-line {
+      stroke: #333333;
+      stroke-width: 1.5px;
+      stroke-linecap: round;
+    }
+
+    .keychain-item {
+      position: fixed;
+      transform: translate(-50%, -50%);
+      cursor: grab;
+      z-index: 101;
+      touch-action: none;
+    }
+
+    .keychain-item:active {
+      cursor: grabbing;
+    }
+
+    .keychain-item img {
+      display: block;
+      pointer-events: none;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+
+    #shell-img { width: 36px; }
+    #bunny-img { width: 54px; }
