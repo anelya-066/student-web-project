@@ -1,44 +1,50 @@
-/* Контейнер нижней голубой части */
-.ocean {
+/* Родительская карточка */
+.card {
   position: relative;
   width: 100%;
-  background: #c3d9f3; /* Основной голубой цвет нижней зоны */
-  overflow: hidden;
+  max-width: 800px;
+  border-radius: 24px;
+  overflow: hidden; /* Обрезает волны по краям карточки */
+  background: #ffffff;
 }
 
-/* Стили для SVG-волн */
-.wave {
+/* Нижний голубой блок */
+.card-bottom {
+  position: relative;
+  width: 100%;
+  height: 180px; /* Высота нижней голубой зоны */
+  background-color: #cddcf0; /* Основной голубой цвет */
+}
+
+/* SVG волны */
+.wave-svg {
   position: absolute;
-  top: -60px; /* Выносим верхушки волн над голубым блоком */
+  top: -59px; /* Подтягиваем волну к верхней границе голубого блока */
   left: 0;
-  width: 200%; /* Ширина 200%, чтобы плавно зациклить горизонтальный сдвиг */
+  width: 200%; /* Ширина x2 для бесшовной анимации */
   height: 60px;
-  fill: #c3d9f3; /* Цвет совпадает с фоном .ocean */
-  animation: moveWave 10s linear infinite;
+  pointer-events: none;
 }
 
-/* Вторая волна для объема и полупрозрачности */
-.wave2 {
-  top: -70px;
+/* Задняя полупрозрачная волна */
+.wave-back {
+  fill: #cddcf0;
   opacity: 0.5;
-  animation: moveWave 7s linear infinite reverse;
+  animation: waveAnim 8s linear infinite alternate;
 }
 
-/* Тело нижнего блока */
-.ocean-body {
-  height: 150px; /* Нужная высота нижней зоны */
-  background: #c3d9f3;
+/* Передняя основная волна */
+.wave-front {
+  fill: #cddcf0;
+  animation: waveAnim 5s ease-in-out infinite alternate;
 }
 
-/* Анимация движения волны влево и вправо */
-@keyframes moveWave {
+/* Анимация "плавания" влево-вправо */
+@keyframes waveAnim {
   0% {
     transform: translateX(0);
   }
-  50% {
-    transform: translateX(-25%);
-  }
   100% {
-    transform: translateX(0);
+    transform: translateX(-50%);
   }
 }

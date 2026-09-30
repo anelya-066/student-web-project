@@ -7,15 +7,18 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="ocean">
-  <svg class="wave" viewBox="0 0 1200 120" preserveAspectRatio="none">
-    <path d="M0,0 C150,90 350,-40 500,40 C650,120 900,10 1200,40 L1200,120 L0,120 Z"></path>
-  </svg>
-  <svg class="wave wave2" viewBox="0 0 1200 120" preserveAspectRatio="none">
-    <path d="M0,0 C150,90 350,-40 500,40 C650,120 900,10 1200,40 L1200,120 L0,120 Z"></path>
-  </svg>
-  <div class="ocean-body">
-    <!-- Содержимое нижней голубой зоны (если есть) -->
+<div class="card">
+  <!-- Верхняя белая часть с поиском и окном -->
+  <div class="card-top">
+    <!-- Ваш контент сверху -->
+  </div>
+
+  <!-- Нижняя голубая часть с волной -->
+  <div class="card-bottom">
+    <svg class="wave-svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M0,30 C150,90 350,-10 500,40 C650,90 900,10 1200,40 L1200,120 L0,120 Z" class="wave-back"></path>
+      <path d="M0,50 C200,10 C400,80 600,20 800,70 C1000,20 1100,60 1200,40 L1200,120 L0,120 Z" class="wave-front"></path>
+    </svg>
   </div>
 </div>
   
