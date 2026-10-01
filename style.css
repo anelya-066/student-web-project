@@ -198,6 +198,7 @@
 }
 
 /* Окно Сапёра */
+/* Увеличенное окно (размер клеток 50px) */
 .popup {
   display: none;
   position: absolute;
@@ -207,26 +208,28 @@
   width: fit-content;
   height: auto;
   background-color: #ffffff;
-  border: 3px solid #8595c7;
-  border-radius: 12px;
+  border: 5px solid #8595c7;
+  border-radius: 20px;
   z-index: 9999;
   font-family: 'Pixel', sans-serif;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
 }
 
-/* Шапка на всю ширину с сине-фиолетовым фоном */
+/* Шапка */
 .popup-header {
   background-color: #8595c7;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
+  gap: 16px;
+  padding: 12px 20px;
+  cursor: auto;
+  user-select: none;
 }
 
 .close {
   color: #ffffff;
-  font-size: 18px;
+  font-size: 28px;
   border: none;
   outline: none;
   background: transparent;
@@ -237,40 +240,38 @@
 
 .popup-title {
   color: #ffffff;
-  font-size: 16px;
-  letter-spacing: 1px;
+  font-size: 24px;
+  letter-spacing: 2px;
 }
 
-/* Внутренний отступ вокруг игровой рамки */
+/* Внутренние отступы */
 .popup-content {
-  padding: 16px;
+  padding: 24px;
 }
 
-/* Рамка вокруг игры */
 .minesweeper-box {
-  border: 3px solid #8595c7;
-  border-radius: 10px;
-  padding: 8px;
-  background-color: #ffffff;
+  border: 5px solid #8595c7;
+  border-radius: 11px;
+  padding: 11px;
+  background-color: #b2afbd;
 }
 
-/* Верхняя панель (счётчики и персонаж) */
+/* Верхняя панель */
 .game-status {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 
-/* Экраны счётчиков с тёмным фоном */
 .counter {
-  background-color: #2c2f48;
-  color: #8fa0e3;
-  font-size: 18px;
+  background-color: #24252f;
+  color: #7d85a3;
+  font-size: 32px;
   font-weight: bold;
-  padding: 4px 10px;
-  border-radius: 4px;
-  letter-spacing: 2px;
+  padding: 8px 18px;
+  border-radius: 8px;
+  letter-spacing: 3px;
 }
 
 .face-btn {
@@ -278,8 +279,8 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  width: 36px;
-  height: 36px;
+  width: 100px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -291,25 +292,28 @@
   object-fit: contain;
 }
 
-/* Игровое поле: 12 колонок */
+/* Игровое поле: клетки 50px */
 .game-board {
   display: grid;
-  grid-template-columns: repeat(12, 22px);
-  gap: 2px;
-  border: 3px solid #8595c7;
+  grid-template-columns: repeat(12, 50px);
+  gap: 4px;
+  border: 3px solid #383065;
   border-radius: 6px;
-  padding: 3px;
-  background-color: #8595c7;
+  padding: 6px;
+  background-color: #5a6078;
 }
 
-/* Клетка */
+/* Клетка 50px x 50px */
 .cell {
-  width: 22px;
-  height: 22px;
-  background-color: #f0f3fa;
-  border-radius: 2px;
+  width: 50px;
+  height: 50px;
+  background-color: #e2e9f9;
+  border-radius: 3px;
   cursor: pointer;
   box-sizing: border-box;
+  font-size: 28px;
+  line-height: 50px;
+  text-align: center;
 }
 
 .cell:hover {
@@ -338,18 +342,43 @@
   width: 50px;
 }
 
-.cell.tile-clicked {
-  background-color: #dce3f5;
-  cursor: default;
-  padding-left: 10px;
-  padding-top: -20px;
-  font-family: 'Pixel', sans-serif;
-  font-size: large;
-
+.cell {
+  width: 50px;           /* ваш текущий размер клетки */
+  height: 50px;
+  background-color: #f4f6f9;
+  border-radius: 4px;
+  cursor: pointer;
+  box-sizing: border-box;
+  
+  /* Настройки шрифта и выравнивания */
+  font-size: 160px;        /* Увеличен шрифт цифры (подходит для клетки 50px) */
+  font-weight: bold;      /* Жирное написание */
+  display: flex;          /* Выравнивание точно по центру */
+  align-items: center;
+  justify-content: center;
+  user-select: none;     /* Чтобы текст не выделялся при кликах */
 }
 
-/* Цвета для цифр */
-.x1 { color: #4b62a6; font-weight: bold; }
-.x2 { color: #388e3c; font-weight: bold; }
-.x3 { color: #d32f2f; font-weight: bold; }
-.x4 { color: #7b1fa2; font-weight: bold; }
+/* Стилизация цифр по цветам в вашей гамме */
+.cell.x1 { color: #5b6ba3; font-size: 32px; }
+.cell.x2 { color: #4b8b62; font-size: 32px; }
+.cell.x3 { color: #b85b5b; font-size: 32px; }
+.cell.x4 { color: #7b5bb8; font-size: 32px; }
+
+/* Увеличение шрифта в верхних счетчиках (018 и 001) */
+.counter {
+  background-color: #2c2f48;
+  color: #8fa0e3;
+  font-size: 44x;       /* Размер шрифта счетчика */
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 8px;
+  letter-spacing: 2px;
+}
+
+/* Фоновый цвет и вид для уже открытой клетки */
+.cell.tile-clicked {
+  background-color: #d1daf2; /* Затенение (более тёмный пастельно-голубой/фиолетовый) */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12); /* Внутренняя тень для эффекта "нажатости" */
+  cursor: default;
+}
