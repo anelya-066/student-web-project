@@ -26,38 +26,39 @@
       <div class="modal-body">
         <p class="welcome-text">Welcome to my website!</p>
         <br>
-      <button class="icon-open" onclick="openPopup()">
+<button class="icon-open" onclick="openPopup()">
   <img class="icon" src="img/mine.png" id="mine-img" alt="Minesweeper">
 </button>
 
+<!-- Всплывающее ретро-окно -->
 <div class="popup" id="popup">
+  <!-- Шапка окна -->
   <div class="popup-header">
     <button class="close" onclick="closePopup()">ⓧ</button>
-    <span class="popup-title">minesweeper</span>
+    <span class="popup-title">minesweeper.exe</span>
   </div>
 
+  <!-- Контент игры -->
   <div class="popup-content">
     <div class="minesweeper-box">
       
+      <!-- Панель статуса -->
       <div class="game-status">
-        <!-- Счётчик мин -->
         <div class="counter" id="mines-count">018</div>
         
-        <!-- Кнопка перезапуска с персонажем -->
         <button class="face-btn" id="reset-btn" onclick="resetGame()">
           <img src="img/PATIK-0001.png" alt="Status" id="face-img">
         </button>
         
-        <!-- Таймер -->
         <div class="counter" id="timer">000</div>
       </div>
 
+      <!-- Игровое поле -->
       <div class="game-board" id="board"></div>
 
     </div>
   </div>
 </div>
-
 
   </main>
 

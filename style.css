@@ -190,137 +190,14 @@
     #shell-img { width: 110px; }
     #bunny-img { width: 110px; }
 
-  @font-face {
+@font-face {
   font-family: 'Pixel';
   src: url('font/Regez-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
-/* Окно Сапёра */
-/* Увеличенное окно (размер клеток 50px) */
-.popup {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: fit-content;
-  height: auto;
-  background-color: #ffffff;
-  border: 5px solid #8595c7;
-  border-radius: 20px;
-  z-index: 9999;
-  font-family: 'Pixel', sans-serif;
-  overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
-}
-
-/* Шапка */
-.popup-header {
-  background-color: #8595c7;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 12px 20px;
-  cursor: auto;
-  user-select: none;
-}
-
-.close {
-  color: #ffffff;
-  font-size: 28px;
-  border: none;
-  outline: none;
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
-  line-height: 1;
-}
-
-.popup-title {
-  color: #ffffff;
-  font-size: 24px;
-  letter-spacing: 2px;
-}
-
-/* Внутренние отступы */
-.popup-content {
-  padding: 24px;
-}
-
-.minesweeper-box {
-  border: 5px solid #8595c7;
-  border-radius: 11px;
-  padding: 11px;
-  background-color: #b2afbd;
-}
-
-/* Верхняя панель */
-.game-status {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.counter {
-  background-color: #24252f;
-  color: #7d85a3;
-  font-size: 32px;
-  font-weight: bold;
-  padding: 8px 18px;
-  border-radius: 8px;
-  letter-spacing: 3px;
-}
-
-.face-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.face-btn img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* Игровое поле: клетки 50px */
-.game-board {
-  display: grid;
-  grid-template-columns: repeat(12, 50px);
-  gap: 4px;
-  border: 3px solid #383065;
-  border-radius: 6px;
-  padding: 6px;
-  background-color: #5a6078;
-}
-
-/* Клетка 50px x 50px */
-.cell {
-  width: 50px;
-  height: 50px;
-  background-color: #e2e9f9;
-  border-radius: 3px;
-  cursor: pointer;
-  box-sizing: border-box;
-  font-size: 28px;
-  line-height: 50px;
-  text-align: center;
-}
-
-.cell:hover {
-  background-color: #dce3f5;
-}
-
-/* Кнопка открытия окна */
+/* Кнопка запуска */
 .icon-open {
   margin-left: -220px;
   margin-top: 100px;
@@ -342,43 +219,180 @@
   width: 50px;
 }
 
-.cell {
-  width: 50px;           /* ваш текущий размер клетки */
-  height: 50px;
-  background-color: #f4f6f9;
+/* ---------------- РЕТРО ОКНО ---------------- */
+.popup {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  height: auto;
+  background-color: #c0c9e8; /* Классический ретро-серый с фиолетовым подтоном */
+  /* Традиционная объёмная рамка Windows */
+  border-top: 4px solid #ffffff;
+  border-left: 4px solid #ffffff;
+  border-right: 4px solid #5b6a9a;
+  border-bottom: 4px solid #5b6a9a;
   border-radius: 4px;
+  z-index: 9999;
+  font-family: 'Pixel', monospace, sans-serif;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* Шапка окна */
+.popup-header {
+  background: linear-gradient(90deg, #8595c7 0%, #6879af 100%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 8px;
+  cursor: auto;
+  user-select: none;
+}
+
+.close {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid #ffffff;
+  border-right-color: #3b4770;
+  border-bottom-color: #3b4770;
+  background: #8595c7;
   cursor: pointer;
-  box-sizing: border-box;
-  
-  /* Настройки шрифта и выравнивания */
-  font-size: 160px;        /* Увеличен шрифт цифры (подходит для клетки 50px) */
-  font-weight: bold;      /* Жирное написание */
-  display: flex;          /* Выравнивание точно по центру */
+  padding: 0 5px;
+  line-height: 1;
+}
+
+.close:active {
+  border: 2px solid #3b4770;
+  border-right-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+.popup-title {
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+/* Внутренняя область */
+.popup-content {
+  padding: 12px;
+}
+
+/* Рамка вогнутого ретро-экрана */
+.minesweeper-box {
+  border-top: 3px solid #5b6a9a;
+  border-left: 3px solid #5b6a9a;
+  border-right: 3px solid #ffffff;
+  border-bottom: 3px solid #ffffff;
+  padding: 10px;
+  background-color: #c0c9e8;
+}
+
+/* Верхняя панель (Счётчик / Смайл / Таймер) */
+.game-status {
+  border-top: 3px solid #5b6a9a;
+  border-left: 3px solid #5b6a9a;
+  border-right: 3px solid #ffffff;
+  border-bottom: 3px solid #ffffff;
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: #c0c9e8;
+}
+
+/* Ретро табло с красным/синим LED-текстом */
+.counter {
+  background-color: #111422;
+  color: #4d7aff; /* Красный классический пиксельный цвет таймера */
+  font-size: 44px;
+  font-weight: bold;
+  padding: 2px 8px;
+  letter-spacing: 3px;
+  border-top: 2px solid #5b6a9a;
+  border-left: 2px solid #5b6a9a;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  font-family: 'Pixel';
+}
+
+/* Кнопка с персонажем */
+.face-btn {
+  background-color: #c0c9e8;
+  border-top: 3px solid #ffffff;
+  border-left: 3px solid #ffffff;
+  border-right: 3px solid #5b6a9a;
+  border-bottom: 3px solid #5b6a9a;
+  cursor: pointer;
+  padding: 2px;
+  width: 44px;
+  height: 44px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  user-select: none;     /* Чтобы текст не выделялся при кликах */
 }
 
-/* Стилизация цифр по цветам в вашей гамме */
-.cell.x1 { color: #5b6ba3; font-size: 32px; }
-.cell.x2 { color: #4b8b62; font-size: 32px; }
-.cell.x3 { color: #b85b5b; font-size: 32px; }
-.cell.x4 { color: #7b5bb8; font-size: 32px; }
+.face-btn:active {
+  border-top: 3px solid #5b6a9a;
+  border-left: 3px solid #5b6a9a;
+  border-right: 3px solid #ffffff;
+  border-bottom: 3px solid #ffffff;
+}
 
-/* Увеличение шрифта в верхних счетчиках (018 и 001) */
-.counter {
-  background-color: #2c2f48;
-  color: #8fa0e3;
-  font-size: 44x;       /* Размер шрифта счетчика */
+.face-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ---------------- ИГРОВОЕ ПОЛЕ ---------------- */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(12, 40px); /* 12 колонок по 40px */
+  gap: 0; /* Ретро сетка строится на границах без зазоров */
+  border-top: 3px solid #5b6a9a;
+  border-left: 3px solid #5b6a9a;
+  border-right: 3px solid #ffffff;
+  border-bottom: 3px solid #ffffff;
+  background-color: #5b6a9a;
+}
+
+/* Закрытая ретро-клетка (выпуклая) */
+.cell {
+  width: 40px;
+  height: 40px;
+  background-color: #dbe2f7;
+  border-top: 3px solid #ffffff;
+  border-left: 3px solid #ffffff;
+  border-right: 3px solid #7c8cb8;
+  border-bottom: 3px solid #7c8cb8;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 24px;
   font-weight: bold;
-  padding: 8px 16px;
-  border-radius: 8px;
-  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
 }
 
-/* Фоновый цвет и вид для уже открытой клетки */
+/* Открытая (нажатая/затемненная) клетка */
 .cell.tile-clicked {
-  background-color: #d1daf2; /* Затенение (более тёмный пастельно-голубой/фиолетовый) */
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12); /* Внутренняя тень для эффекта "нажатости" */
+  background-color: #b3c0e6; /* Более темный тон открытой клетки */
+  border-top: 1px solid #7c8cb8;
+  border-left: 1px solid #7c8cb8;
+  border-right: 1px solid #b3c0e6;
+  border-bottom: 1px solid #b3c0e6;
   cursor: default;
 }
+
+/* Цвета для цифр */
+.cell.x1 { color: #2d45a3; }
+.cell.x2 { color: #2e7d32; }
+.cell.x3 { color: #c62828; }
+.cell.x4 { color: #6a1b9a; }
+.cell.x5 { color: #801313; }
