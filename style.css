@@ -309,7 +309,7 @@
 .counter {
   background-color: #111422;
   color: #4d7aff; /* Красный классический пиксельный цвет таймера */
-  font-size: 44px;
+  font-size: 40px;
   font-weight: bold;
   padding: 2px 8px;
   letter-spacing: 3px;
@@ -329,8 +329,8 @@
   border-bottom: 3px solid #5b6a9a;
   cursor: pointer;
   padding: 2px;
-  width: 44px;
-  height: 44px;
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -363,21 +363,31 @@
 
 /* Закрытая ретро-клетка (выпуклая) */
 .cell {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   background-color: #dbe2f7;
   border-top: 3px solid #ffffff;
   border-left: 3px solid #ffffff;
   border-right: 3px solid #7c8cb8;
   border-bottom: 3px solid #7c8cb8;
+  border-radius: 5px;
+  
   box-sizing: border-box;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 50px;
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
+}
+.cell:hover{
+  background-color: #c9cddf;
+  border-top: 3px solid #a8adbb;
+  border-left: 3px solid #a4a9b8;
+  border-right: 3px solid #7c8cb8;
+  border-bottom: 3px solid #7c8cb8;
+
 }
 
 /* Открытая (нажатая/затемненная) клетка */
