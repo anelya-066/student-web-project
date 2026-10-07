@@ -128,6 +128,8 @@ let minesLocation = [];
 
 let tilesClicked = 0;
 let gameOver = false;
+window.gameOver = false;
+window.seconds = 0;
 
 // Таймер
 let timerInterval = null;
@@ -175,6 +177,8 @@ function startGame() {
   board = [];
   tilesClicked = 0;
   gameOver = false;
+  window.gameOver = false;
+  window.seconds = 0;
 
   let minesCountElem = document.getElementById("mines-count");
   if (minesCountElem) {
@@ -208,6 +212,7 @@ function startTimer() {
   if (!timerInterval) {
     timerInterval = setInterval(function () {
       seconds++;
+       window.seconds = seconds;
       if (seconds > 999) seconds = 999;
       updateTimerDisplay();
     }, 1000);
@@ -263,6 +268,7 @@ function clickTile() {
 
   if (minesLocation.includes(tile.id)) {
     gameOver = true;
+    window.gameOver = true;
     stopTimer();
 
     let faceImg = document.getElementById("face-img");
@@ -332,6 +338,7 @@ function checkMine(r, c) {
     let minesCountElem = document.getElementById("mines-count");
     if (minesCountElem) minesCountElem.innerText = "WIN";
     gameOver = true;
+    window.gameOver = true;
   }
 }
 
