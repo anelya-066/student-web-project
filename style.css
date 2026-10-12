@@ -1,194 +1,249 @@
 * {
-      box-sizing: border-box;
-    }
-
-
-      @font-face {
-    font-family: 'MyCustomFont';
-    src: url('font/Excalifont-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  box-sizing: border-box;
 }
 
-    
-    /* Растягиваем сайт на весь экран */
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background-color: #ffffff;
-      font-family: 'MyCustomFont', sans-serif;
-      overflow-x: hidden;
-      user-select: none;
-    }
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('font/Excalifont-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
-    /* Верхняя основная секция */
-    .main-content {
-      flex: 1;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-      min-height: 65vh;
-    }
+/* Растягиваем сайт на весь экран */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  font-family: 'MyCustomFont', sans-serif;
+  overflow-x: hidden;
+  user-select: none;
+}
 
-    /* Поисковая строка */
-    .search-container {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 30px;
-    }
+/* Верхняя основная секция */
+.main-content {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  min-height: 65vh;
+}
 
-    .search-input {
-      width: 380px;
-      height: 38px;
-      border-radius: 20px;
-      border: 2px solid #a4b3e3;
-      padding: 0 18px;
-      font-family: inherit;
-      font-size: 16px;
-      color: #8f9ed4;
-      outline: none;
-      background: #ffffff;
-    }
+/* Поисковая строка */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
 
-    .search-input::placeholder {
-      color: #b7c4eb;
-    }
+.search-input {
+  width: 380px;
+  height: 38px;
+  border-radius: 20px;
+  border: 2px solid #a4b3e3;
+  padding: 0 18px;
+  font-family: inherit;
+  font-size: 16px;
+  color: #8f9ed4;
+  outline: none;
+  background: #ffffff;
+}
 
-    .search-icon {
-      width: 28px;
-      height: 28px;
-      stroke: #8f9ed4;
-      stroke-width: 2.5;
-      fill: none;
-    }
+.search-input::placeholder {
+  color: #b7c4eb;
+}
 
-    /* Модальное окно */
-    .modal-window {
-      width: 360px;
-      height: 260px;
-      border: 5px solid #8493c5;
-      border-radius: 14px;
-      background-color: #ffffff;
-      box-shadow: 0 5px 0px rgba(130, 145, 195, 0.2);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
+.search-icon {
+  width: 28px;
+  height: 28px;
+  stroke: #8f9ed4;
+  stroke-width: 2.5;
+  fill: none;
+}
 
-    .modal-header {
-      background-color: #8f9ed4;
-      height: 38px;
-      display: flex;
-      align-items: center;
-      padding-left: 14px;
-      color: #ffffff;
-    }
+/* Модальное окно */
+.modal-window {
+  width: 420px; /* Слегка расширили под 4 кнопки в ряд */
+  height: 280px;
+  border: 5px solid #8493c5;
+  border-radius: 14px;
+  background-color: #ffffff;
+  box-shadow: 0 5px 0px rgba(130, 145, 195, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
 
-    .close-icon {
-      font-size: 18px;
-      cursor: pointer;
-    }
+.modal-header {
+  background-color: #8f9ed4;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  padding-left: 14px;
+  color: #ffffff;
+}
 
-    .modal-body {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
+.close-icon {
+  font-size: 18px;
+  cursor: pointer;
+}
 
-    .welcome-text {
-      font-size: 22px;
-      color: #5b6ba3;
-      font-style: normal;
-      letter-spacing: 0.5px;
-      margin: 0;
-    }
+.modal-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+}
 
-    /* Блок плавных волн */
-    .wave-container {
-      width: 100%;
-      height: 12vh;
-      min-height: 80px;
-      max-height: 140px;
-      margin-bottom: -2px;
-      line-height: 0;
-    }
+.modal-inner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
 
-    .waves-svg {
-      width: 100%;
-      height: 100%;
-    }
+.welcome-text {
+  font-size: 22px;
+  color: #5b6ba3;
+  font-style: normal;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
 
-    /* Анимация волн */
-    .parallax > use {
-      animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
-    }
-    .parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; }
-    .parallax > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; }
-    .parallax > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; }
-    .parallax > use:nth-child(4) { animation-delay: -5s; animation-duration: 20s; }
+/* Сетка кнопок в ряд */
+.buttons-grid {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
 
-    @keyframes move-forever {
-      0% { transform: translate3d(-90px, 0, 0); }
-      100% { transform: translate3d(85px, 0, 0); }
-    }
+/* Стиль для кнопок в модальном окне */
+.menu-btn {
+  background-color: #ffffff;
+  border: 2px solid #a4b3e3;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #5b6ba3;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 75px;
+  height: 38px;
+  box-shadow: 0 3px 5px rgba(130, 145, 195, 0.15);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
 
-    /* Нижний подвал */
-    .footer {
-      background-color: #cbdcf3;
-      width: 100%;
-      padding: 30px 20px;
-      text-align: center;
-      color: #7c839f;
-      font-weight: bold;
-    }
+/* Плавное увеличение при наведении */
+.menu-btn:hover {
+  transform: scale(1.08);
+  background-color: #f3f6fc;
+}
 
-    /* Позиционирование физической нити и брелоков поверх экрана */
-    .string-svg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 100;
-    }
+.menu-btn:active {
+  transform: scale(0.95);
+}
 
-    .string-line {
-      stroke: #333333;
-      stroke-width: 3px;
-      stroke-linecap: round;
-    }
+.btn-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
 
-    .keychain-item {
-      position: fixed;
-      transform: translate(-50%, -50%);
-      cursor: grab;
-      z-index: 101;
-      touch-action: none;
-    }
+/* Блок плавных волн */
+.wave-container {
+  width: 100%;
+  height: 12vh;
+  min-height: 80px;
+  max-height: 140px;
+  margin-bottom: -2px;
+  line-height: 0;
+}
 
-    .keychain-item:active {
-      cursor: grabbing;
-    }
+.waves-svg {
+  width: 100%;
+  height: 100%;
+}
 
-    .keychain-item img {
-      display: block;
-      pointer-events: none;
-      image-rendering: pixelated;
-      image-rendering: crisp-edges;
-    }
+/* Анимация волн */
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+}
+.parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; }
+.parallax > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; }
+.parallax > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; }
+.parallax > use:nth-child(4) { animation-delay: -5s; animation-duration: 20s; }
 
-    #shell-img { width: 110px; }
-    #bunny-img { width: 110px; }
+@keyframes move-forever {
+  0% { transform: translate3d(-90px, 0, 0); }
+  100% { transform: translate3d(85px, 0, 0); }
+}
+
+/* Нижний подвал */
+.footer {
+  background-color: #cbdcf3;
+  width: 100%;
+  padding: 30px 20px;
+  text-align: center;
+  color: #7c839f;
+  font-weight: bold;
+}
+
+/* Позиционирование физической нити и брелоков поверх экрана */
+.string-svg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.string-line {
+  stroke: #333333;
+  stroke-width: 3px;
+  stroke-linecap: round;
+}
+
+.keychain-item {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  z-index: 101;
+  touch-action: none;
+  transition: transform 0.3s ease; /* Плавность для брелоков тоже */
+}
+
+.keychain-item:hover {
+  transform: translate(-50%, -50%) scale(1.1); /* Увеличение брелоков */
+}
+
+.keychain-item:active {
+  cursor: grabbing;
+}
+
+.keychain-item img {
+  display: block;
+  pointer-events: none;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+#shell-img { width: 110px; }
+#bunny-img { width: 110px; }
 
 @font-face {
   font-family: 'Pixel';
@@ -197,45 +252,22 @@
   font-style: normal;
 }
 
-/* Кнопка запуска */
-.icon-open {
-  margin-left: -220px;
-  margin-top: 100px;
-  position: fixed;
-  cursor: pointer;
-  z-index: 101;
-  touch-action: none;
-  transition: transform 0.2s ease-in;
-  border: none;
-  outline: none;
-  background: transparent;
-}
-
-.icon-open:hover {
-  transform: scale(1.2);
-}
-
-#mine-img {
-  width: 50px;
-}
-
 /* ---------------- РЕТРО ОКНО ---------------- */
 .popup {
   display: none;
-  position: absolute;
+  position: fixed; /* Изменили с absolute на fixed, чтобы окно выравнивалось по экрану */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: fit-content;
   height: auto;
-  background-color: #c0c9e8; /* Классический ретро-серый с фиолетовым подтоном */
-  /* Традиционная объёмная рамка Windows */
+  background-color: #c0c9e8;
   border-top: 4px solid #ffffff;
   border-left: 4px solid #ffffff;
   border-right: 4px solid #5b6a9a;
   border-bottom: 4px solid #5b6a9a;
   border-radius: 4px;
-  z-index: 9999;
+  z-index: 9999; /* Поверх всех элементов и брелоков */
   font-family: 'Pixel', monospace, sans-serif;
   box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.25);
 }
@@ -281,7 +313,6 @@
   padding: 12px;
 }
 
-/* Рамка вогнутого ретро-экрана */
 .minesweeper-box {
   border-top: 3px solid #5b6a9a;
   border-left: 3px solid #5b6a9a;
@@ -291,7 +322,6 @@
   background-color: #c0c9e8;
 }
 
-/* Верхняя панель (Счётчик / Смайл / Таймер) */
 .game-status {
   border-top: 3px solid #5b6a9a;
   border-left: 3px solid #5b6a9a;
@@ -305,10 +335,9 @@
   background-color: #c0c9e8;
 }
 
-/* Ретро табло с красным/синим LED-текстом */
 .counter {
   background-color: #111422;
-  color: #4d7aff; /* Красный классический пиксельный цвет таймера */
+  color: #4d7aff;
   font-size: 40px;
   font-weight: bold;
   padding: 2px 8px;
@@ -320,7 +349,6 @@
   font-family: 'Pixel';
 }
 
-/* Кнопка с персонажем */
 .face-btn {
   background-color: #c0c9e8;
   border-top: 3px solid #ffffff;
@@ -352,8 +380,8 @@
 /* ---------------- ИГРОВОЕ ПОЛЕ ---------------- */
 .game-board {
   display: grid;
-  grid-template-columns: repeat(12, 40px); /* 12 колонок по 40px */
-  gap: 0; /* Ретро сетка строится на границах без зазоров */
+  grid-template-columns: repeat(12, 40px);
+  gap: 0;
   border-top: 3px solid #5b6a9a;
   border-left: 3px solid #5b6a9a;
   border-right: 3px solid #ffffff;
@@ -361,7 +389,6 @@
   background-color: #5b6a9a;
 }
 
-/* Закрытая ретро-клетка (выпуклая) */
 .cell {
   width: 48px;
   height: 48px;
@@ -371,7 +398,6 @@
   border-right: 3px solid #7c8cb8;
   border-bottom: 3px solid #7c8cb8;
   border-radius: 5px;
-  
   box-sizing: border-box;
   cursor: pointer;
   font-size: 50px;
@@ -381,18 +407,17 @@
   justify-content: center;
   user-select: none;
 }
-.cell:hover{
+
+.cell:hover {
   background-color: #c9cddf;
   border-top: 3px solid #a8adbb;
   border-left: 3px solid #a4a9b8;
   border-right: 3px solid #7c8cb8;
   border-bottom: 3px solid #7c8cb8;
-
 }
 
-/* Открытая (нажатая/затемненная) клетка */
 .cell.tile-clicked {
-  background-color: #b3c0e6; /* Более темный тон открытой клетки */
+  background-color: #b3c0e6;
   border-top: 1px solid #7c8cb8;
   border-left: 1px solid #7c8cb8;
   border-right: 1px solid #b3c0e6;
@@ -400,9 +425,67 @@
   cursor: default;
 }
 
-/* Цвета для цифр */
 .cell.x1 { color: #2d45a3; }
 .cell.x2 { color: #2e7d32; }
 .cell.x3 { color: #c62828; }
 .cell.x4 { color: #6a1b9a; }
 .cell.x5 { color: #801313; }
+
+/* Контейнер с прокруткой для галереи */
+.artwork-scroll-box {
+  max-height: 320px; /* Высота окна, после которой появляется скролл */
+  overflow-y: auto;   /* Вертикальная прокрутка */
+  overflow-x: hidden;
+  padding-right: 4px;
+}
+
+/* Сетка картинок (по 2 в ряд, как на макете) */
+.artwork-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 4px;
+}
+
+/* Карточка отдельного арта */
+.artwork-card {
+  background-color: #ffffff;
+  border: 2px solid #5b6a9a;
+  border-radius: 6px;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 2px 2px 0px rgba(255, 255, 255, 0.8);
+}
+
+/* Сама картинка с плавным увеличением при наведении */
+.artwork-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: pixelated;
+  transition: transform 0.3s ease; /* Плавность */
+}
+
+.artwork-card img:hover {
+  transform: scale(1.08); /* Легкое увеличение при наведении мышки */
+}
+
+/* Стилизация полосы прокрутки (скроллбара) в ретро-стиле */
+.artwork-scroll-box::-webkit-scrollbar {
+  width: 12px;
+}
+
+.artwork-scroll-box::-webkit-scrollbar-track {
+  background: #c0c9e8;
+  border-left: 2px solid #5b6a9a;
+}
+
+.artwork-scroll-box::-webkit-scrollbar-thumb {
+  background: #8595c7;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #3b4770;
+  border-bottom: 2px solid #3b4770;
+}

@@ -1,122 +1,131 @@
 const shellEl = document.getElementById('shell');
-    const bunnyEl = document.getElementById('bunny');
-    const line1 = document.getElementById('line1');
-    const line2 = document.getElementById('line2');
+const bunnyEl = document.getElementById('bunny');
+const line1 = document.getElementById('line1');
+const line2 = document.getElementById('line2');
 
-    // Точка крепления нити в правом верхнем углу окна (в 140px от правого края)
-    let anchor = { x: window.innerWidth - 340, y: 0 };
+// Точка крепления нити в правом верхнем углу окна (в 140px от правого края)
+let anchor = { x: window.innerWidth - 340, y: 0 };
 
-    // Координаты брелоков
-    const p1 = { x: anchor.x, y: 300, oldX: anchor.x, oldY: 120, length: 220 };
-    const p2 = { x: anchor.x, y: 250, oldX: anchor.x, oldY: 275, length: 95 };
+// Координаты брелоков
+const p1 = { x: anchor.x, y: 300, oldX: anchor.x, oldY: 120, length: 220 };
+const p2 = { x: anchor.x, y: 250, oldX: anchor.x, oldY: 275, length: 95 };
 
-    // Физика пружины
-    const gravity = 0.4;
-    const damping = 0.95;
-    const stiffness = 0.08;
+// Физика пружины
+const gravity = 0.4;
+const damping = 0.95;
+const stiffness = 0.08;
 
-    let draggedPoint = null;
-    let mouseX = 0;
-    let mouseY = 0;
+let draggedPoint = null;
+let mouseX = 0;
+let mouseY = 0;
 
-    // Обновляем точку привязки при изменении размера окна
-    window.addEventListener('resize', () => {
-      anchor.x = window.innerWidth - 140;
-    });
+// Обновляем точку привязки при изменении размера окна
+window.addEventListener('resize', () => {
+  anchor.x = window.innerWidth - 140;
+});
 
-    function updatePhysics() {
-      [p1, p2].forEach(p => {
-        if (draggedPoint !== p) {
-          let vx = (p.x - p.oldX) * damping;
-          let vy = (p.y - p.oldY) * damping + gravity;
-          p.oldX = p.x;
-          p.oldY = p.y;
-          p.x += vx;
-          p.y += vy;
-        } else {
-          p.oldX = p.x;
-          p.oldY = p.y;
-          p.x = mouseX;
-          p.y = mouseY;
-        }
-      });
-
-      applySpring(anchor, p1, p1.length, true);
-      applySpring(p1, p2, p2.length, false);
-
-      render();
-      requestAnimationFrame(updatePhysics);
+function updatePhysics() {
+  [p1, p2].forEach(p => {
+    if (draggedPoint !== p) {
+      let vx = (p.x - p.oldX) * damping;
+      let vy = (p.y - p.oldY) * damping + gravity;
+      p.oldX = p.x;
+      p.oldY = p.y;
+      p.x += vx;
+      p.y += vy;
+    } else {
+      p.oldX = p.x;
+      p.oldY = p.y;
+      p.x = mouseX;
+      p.y = mouseY;
     }
+  });
 
-    function applySpring(pA, pB, restLength, isAnchorFixed) {
-      let dx = pB.x - pA.x;
-      let dy = pB.y - pA.y;
-      let dist = Math.hypot(dx, dy) || 0.001;
+  applySpring(anchor, p1, p1.length, true);
+  applySpring(p1, p2, p2.length, false);
 
-      let delta = dist - restLength;
-      let force = delta * stiffness;
+  render();
+  requestAnimationFrame(updatePhysics);
+}
 
-      let fx = (dx / dist) * force;
-      let fy = (dy / dist) * force;
+function applySpring(pA, pB, restLength, isAnchorFixed) {
+  let dx = pB.x - pA.x;
+  let dy = pB.y - pA.y;
+  let dist = Math.hypot(dx, dy) || 0.001;
 
-      if (!isAnchorFixed && draggedPoint !== pA) {
-        pA.x += fx;
-        pA.y += fy;
-      }
-      if (draggedPoint !== pB) {
-        pB.x -= fx;
-        pB.y -= fy;
-      }
-    }
+  let delta = dist - restLength;
+  let force = delta * stiffness;
 
-    function render() {
-      shellEl.style.left = `${p1.x}px`;
-      shellEl.style.top = `${p1.y}px`;
+  let fx = (dx / dist) * force;
+  let fy = (dy / dist) * force;
 
-      bunnyEl.style.left = `${p2.x}px`;
-      bunnyEl.style.top = `${p2.y}px`;
+  if (!isAnchorFixed && draggedPoint !== pA) {
+    pA.x += fx;
+    pA.y += fy;
+  }
+  if (draggedPoint !== pB) {
+    pB.x -= fx;
+    pB.y -= fy;
+  }
+}
 
-      line1.setAttribute('x1', anchor.x);
-      line1.setAttribute('y1', anchor.y);
-      line1.setAttribute('x2', p1.x);
-      line1.setAttribute('y2', p1.y);
+function render() {
+  shellEl.style.left = `${p1.x}px`;
+  shellEl.style.top = `${p1.y}px`;
 
-      line2.setAttribute('x1', p1.x);
-      line2.setAttribute('y1', p1.y);
-      line2.setAttribute('x2', p2.x);
-      line2.setAttribute('y2', p2.y);
-    }
+  bunnyEl.style.left = `${p2.x}px`;
+  bunnyEl.style.top = `${p2.y}px`;
 
-    function handleStart(e, point) {
-      draggedPoint = point;
-      updateMousePos(e);
-    }
+  line1.setAttribute('x1', anchor.x);
+  line1.setAttribute('y1', anchor.y);
+  line1.setAttribute('x2', p1.x);
+  line1.setAttribute('y2', p1.y);
 
-    function updateMousePos(e) {
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-      mouseX = clientX;
-      mouseY = clientY;
-    }
+  line2.setAttribute('x1', p1.x);
+  line2.setAttribute('y1', p1.y);
+  line2.setAttribute('x2', p2.x);
+  line2.setAttribute('y2', p2.y);
+}
 
-    shellEl.addEventListener('mousedown', (e) => handleStart(e, p1));
-    bunnyEl.addEventListener('mousedown', (e) => handleStart(e, p2));
-    shellEl.addEventListener('touchstart', (e) => handleStart(e, p1));
-    bunnyEl.addEventListener('touchstart', (e) => handleStart(e, p2));
+function handleStart(e, point) {
+  draggedPoint = point;
+  updateMousePos(e);
+}
 
-    window.addEventListener('mousemove', (e) => { if (draggedPoint) updateMousePos(e); });
-    window.addEventListener('touchmove', (e) => { if (draggedPoint) updateMousePos(e); });
-    window.addEventListener('mouseup', () => draggedPoint = null);
-    window.addEventListener('touchend', () => draggedPoint = null);
+function updateMousePos(e) {
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+  mouseX = clientX;
+  mouseY = clientY;
+}
 
-    updatePhysics();
-    
+shellEl.addEventListener('mousedown', (e) => handleStart(e, p1));
+bunnyEl.addEventListener('mousedown', (e) => handleStart(e, p2));
+shellEl.addEventListener('touchstart', (e) => handleStart(e, p1));
+bunnyEl.addEventListener('touchstart', (e) => handleStart(e, p2));
+
+window.addEventListener('mousemove', (e) => { if (draggedPoint) updateMousePos(e); });
+window.addEventListener('touchmove', (e) => { if (draggedPoint) updateMousePos(e); });
+window.addEventListener('mouseup', () => draggedPoint = null);
+window.addEventListener('touchend', () => draggedPoint = null);
+
+updatePhysics();
+
+// ИСПРАВЛЕННЫЕ ФУНКЦИИ ОТКРЫТИЯ/ЗАКРЫТИЯ ОКОН:
 function openPopup() {
-  document.querySelector('.popup').style.display = 'block';
+  document.getElementById('popup').style.display = 'block';
 }
 
 function closePopup() {
-  document.querySelector('.popup').style.display = 'none';
+  document.getElementById('popup').style.display = 'none';
+}
+
+function openArtwork() {
+  document.getElementById('artwork-popup').style.display = 'block';
+}
+
+function closeArtwork() {
+  document.getElementById('artwork-popup').style.display = 'none';
 }
 
 let board = [];
@@ -138,7 +147,7 @@ let gameStarted = false;
 
 // Картинки
 const IMG_NORMAL = "img/PATIK-0001.png";
-const IMG_LOSE = "img/PATIK-0002.png"; // Укажите имя вашего файла поражения
+const IMG_LOSE = "img/PATIK-0002.png";
 const IMG_MINE = "img/mine.png";
 const IMG_FLAG = "img/flag.png";
 
@@ -212,7 +221,7 @@ function startTimer() {
   if (!timerInterval) {
     timerInterval = setInterval(function () {
       seconds++;
-       window.seconds = seconds;
+      window.seconds = seconds;
       if (seconds > 999) seconds = 999;
       updateTimerDisplay();
     }, 1000);
@@ -350,39 +359,42 @@ function checkTile(r, c) {
 
 /* Функция перетаскивания окна за шапку */
 function initDrag() {
-  const popup = document.querySelector('.popup');
-  const popupHeader = document.querySelector('.popup-header');
+  const popups = document.querySelectorAll('.popup');
 
-  if (popup && popupHeader) {
-    let isDragging = false;
-    let offsetX = 0, offsetY = 0;
+  popups.forEach(popup => {
+    const popupHeader = popup.querySelector('.popup-header');
 
-    popupHeader.addEventListener('mousedown', function (e) {
-      if (e.target.classList.contains('close')) return;
-      isDragging = true;
+    if (popup && popupHeader) {
+      let isDragging = false;
+      let offsetX = 0, offsetY = 0;
 
-      const rect = popup.getBoundingClientRect();
-      popup.style.transform = 'none';
-      popup.style.left = rect.left + 'px';
-      popup.style.top = rect.top + 'px';
+      popupHeader.addEventListener('mousedown', function (e) {
+        if (e.target.classList.contains('close')) return;
+        isDragging = true;
 
-      offsetX = e.clientX - rect.left;
-      offsetY = e.clientY - rect.top;
+        const rect = popup.getBoundingClientRect();
+        popup.style.transform = 'none';
+        popup.style.left = rect.left + 'px';
+        popup.style.top = rect.top + 'px';
 
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseup', onMouseUp);
-    });
+        offsetX = e.clientX - rect.left;
+        offsetY = e.clientY - rect.top;
 
-    function onMouseMove(e) {
-      if (!isDragging) return;
-      popup.style.left = (e.clientX - offsetX) + 'px';
-      popup.style.top = (e.clientY - offsetY) + 'px';
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', onMouseUp);
+      });
+
+      function onMouseMove(e) {
+        if (!isDragging) return;
+        popup.style.left = (e.clientX - offsetX) + 'px';
+        popup.style.top = (e.clientY - offsetY) + 'px';
+      }
+
+      function onMouseUp() {
+        isDragging = false;
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+      }
     }
-
-    function onMouseUp() {
-      isDragging = false;
-      document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseup', onMouseUp);
-    }
-  }
+  });
 }

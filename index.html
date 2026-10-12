@@ -4,12 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>website</title>
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
- 
-<!-- Верхняя секция сайта -->
+  <!-- Верхняя секция сайта -->
   <main class="main-content">
     <div class="search-container">
       <input type="text" placeholder="search" class="search-input">
@@ -24,43 +23,69 @@
         <span class="close-icon">ⓧ</span>
       </div>
       <div class="modal-body">
-        <p class="welcome-text">Welcome to my website!</p>
-        <br>
-<button class="icon-open" onclick="openPopup()">
-  <img class="icon" src="img/mine2.png" id="mine-img" alt="Minesweeper">
-</button>
-
-<!-- Всплывающее ретро-окно -->
-<div class="popup" id="popup">
-  <!-- Шапка окна -->
-  <div class="popup-header">
-    <button class="close" onclick="closePopup()">ⓧ</button>
-    <span class="popup-title">minesweeper.exe</span>
-  </div>
-
-  <!-- Контент игры -->
-  <div class="popup-content">
-    <div class="minesweeper-box">
-      
-      <!-- Панель статуса -->
-      <div class="game-status">
-        <div class="counter" id="mines-count">018</div>
-        
-        <button class="face-btn" id="reset-btn" onclick="resetGame()">
-          <img src="img/PATIK-0001.png" alt="Status" id="face-img">
-        </button>
-        
-        <div class="counter" id="timer">000</div>
+        <div class="modal-inner-content">
+          <p class="welcome-text">Welcome to my website!</p>
+          
+          <!-- Кнопки в ряд -->
+          <div class="buttons-grid">
+            <button class="menu-btn" onclick="openArtwork()">artwork</button>
+            <button class="menu-btn" onclick="openPopup()">
+            <img class="btn-icon" src="img/mine2.png" alt="Minesweeper">
+              </button>
+            <button class="menu-btn"></button>
+            <button class="menu-btn"></button>
+          </div>
+        </div>
       </div>
+    </div>
+  </main>
 
-      <!-- Игровое поле -->
-      <div class="game-board" id="board"></div>
+  <!-- 1. Всплывающее окно галереи ARTWORK -->
+  <div class="popup" id="artwork-popup">
+    <div class="popup-header">
+      <button class="close" onclick="closeArtwork()">ⓧ</button>
+      <span class="popup-title">artwork.exe</span>
+    </div>
 
+    <div class="popup-content">
+      <div class="artwork-scroll-box">
+        <div class="artwork-grid">
+          <div class="artwork-card"><img src="img/buttom.png" alt="art 1"></div>
+          <div class="artwork-card"><img src="img/buttom-1.png" alt="art 2"></div>
+          <div class="artwork-card"><img src="img/buttom-2.png" alt="art 3"></div>
+          <div class="artwork-card"><img src="img/buttom-3.png" alt="art 4"></div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-  </main>
+  <!-- 2. Всплывающее ретро-окно САПЕР -->
+  <div class="popup" id="popup">
+    <div class="popup-header">
+      <button class="close" onclick="closePopup()">ⓧ</button>
+      <span class="popup-title">minesweeper.exe</span>
+    </div>
+
+    <div class="popup-content">
+      <div class="minesweeper-box">
+        
+        <!-- Панель статуса -->
+        <div class="game-status">
+          <div class="counter" id="mines-count">018</div>
+          
+          <button class="face-btn" id="reset-btn" onclick="resetGame()">
+            <img src="img/PATIK-0001.png" alt="Status" id="face-img">
+          </button>
+          
+          <div class="counter" id="timer">000</div>
+        </div>
+
+        <!-- Игровое поле -->
+        <div class="game-board" id="board"></div>
+
+      </div>
+    </div>
+  </div>
 
   <!-- Анимированная волна -->
   <div class="wave-container">
@@ -81,6 +106,7 @@
   <footer class="footer">
     © 2026 Ваш Сайт. Все права защищены.
   </footer>
+
   <!-- Интерактивная нить и брелоки -->
   <svg class="string-svg">
     <line id="line1" class="string-line" />
@@ -94,8 +120,7 @@
   <div id="bunny" class="keychain-item">
     <img src="img/jellyfish-0001.png" id="bunny-img" alt="Bunny">
   </div>
-<script src="sscript.js">
-  
-</script>
+
+  <script src="sscript.js"></script>
 </body>
 </html>
