@@ -9,7 +9,7 @@
   font-style: normal;
 }
 
-/* Растягиваем сайт на весь экран */
+
 body {
   margin: 0;
   padding: 0;
@@ -22,7 +22,7 @@ body {
   user-select: none;
 }
 
-/* Верхняя основная секция */
+
 .main-content {
   flex: 1;
   position: relative;
