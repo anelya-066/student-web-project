@@ -16,7 +16,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #e2e1e4;
+  background-color: #2b2a2e;
   font-family: 'MyCustomFont', sans-serif;
   overflow-x: hidden;
   user-select: none;
